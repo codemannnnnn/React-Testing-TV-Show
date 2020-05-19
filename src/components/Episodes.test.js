@@ -60,9 +60,7 @@ test("Episodes renders with no errors", () => {
   render(<Episodes episodes={[]} />);
 });
 
-test("Render a list of episodes after a season is selected", () => {
-  // render component with an empty array for the episodes prop
-  // re-render component with episodes data (simulating that the user selected a season. For this test we will be using season 1.)
+test("Renders list after season has loaded", () => {
   const { rerender, debug, queryAllByTestId } = render(
     <Episodes episodes={[]} />
   );
@@ -73,8 +71,6 @@ test("Render a list of episodes after a season is selected", () => {
   rerender(<Episodes episodes={movieData} />);
   debug();
 
-  // query for the episodes being rendered
   const episodes = queryAllByTestId(/episodes/i);
-  // assert that they are listed on the DOM
   expect(episodes).toHaveLength(2);
 });
